@@ -15,7 +15,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "VOTE")
+@Table(name = "DERP_VOTE")
 public class Vote implements Serializable{
 
 	/**
