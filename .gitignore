@@ -89,3 +89,5 @@ connection.properties
 *.jpg
 *.gif
 *.mp4
+
+pom.properties

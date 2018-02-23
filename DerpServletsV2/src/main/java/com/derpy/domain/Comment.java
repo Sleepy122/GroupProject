@@ -15,7 +15,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "COMMENT")
+@Table(name = "DERP_COMMENT")
 public class Comment implements Serializable{
 
 	/**

@@ -11,7 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "DERP_USER")
 public class User implements Serializable{
 
 	/**
