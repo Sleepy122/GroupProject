@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 
 import com.revature.dao.*;
 import com.revature.dao.FlashcardDao;
@@ -23,7 +26,7 @@ public class Driver {
 
 	public static void main(String[] args) {
 
-		// init();
+		 //init();
 
 		// FlashcardDao fd = new FlashcardDaoImpl();
 
@@ -34,13 +37,14 @@ public class Driver {
 		// updateAndMerge();
 
 		// Category c1 = new Category (1, "coding");
-		// funWithNamedQueries(c1);
+		//funWithNamedQueries();
 
 		// funWithCache();
+		//caveInit();
+		 //animalInit();
 
-		// animalInit();
-
-		moreAnimals();
+		//moreAnimals();
+		funWithCriteria();
 
 	}
 
@@ -137,7 +141,32 @@ public class Driver {
 
 	static void funWithCriteria() {
 		Session s = HibernateUtil.getSession();
-		// STAY TUNED FOR BEARS
+		
+		Criteria c = s.createCriteria(Animal.class);
+		
+		c.add(Restrictions.ilike("name", "G%"));
+		c.add(Restrictions.isNotNull("bearType"));
+		
+		System.out.println(c.list().toString());
+		
+		Criteria c2 = s.createCriteria(Animal.class);
+		
+		c2.add(Restrictions.isNotNull("wingspan"));
+		c2.add(Restrictions.between("wingspan", 50, 100));
+		
+		Criteria c3 = s.createCriteria(Animal.class);
+		c3.add(Restrictions.isNotNull("wingspan"));
+		c3.setProjection(Projections.sum("wingspan"));
+		
+		Criteria c4 = s.createCriteria(Animal.class);
+		c4.add(Restrictions.isNotNull("bearType"));
+		c4.setProjection(Projections.count("bearType"));
+		
+		
+		System.out.println(c2.list().toString());
+		System.out.println(c3.list().toString());
+		System.out.println(c4.list().toString());
+		
 		s.close();
 
 	}

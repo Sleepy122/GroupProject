@@ -23,9 +23,12 @@ public class Bear extends Animal implements Serializable {
 	@Column(name="BEAR_TYPE")
 	private String bearType;
 
+	
+
 	@Override
 	public String toString() {
-		return "Bear [bearType=" + bearType + "]";
+		return "Bear [bearType=" + bearType + ", Id=" + getId()
+				+ ", name=" + getName() + ", cave=" + getCave() + "]";
 	}
 
 	public String getBearType() {
