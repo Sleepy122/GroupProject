@@ -147,7 +147,7 @@ public class Driver {
 		c.add(Restrictions.ilike("name", "G%"));
 		c.add(Restrictions.isNotNull("bearType"));
 		
-		System.out.println(c.list().toString());
+		
 		
 		Criteria c2 = s.createCriteria(Animal.class);
 		
@@ -162,9 +162,12 @@ public class Driver {
 		c4.add(Restrictions.isNotNull("bearType"));
 		c4.setProjection(Projections.count("bearType"));
 		
-		
+		System.out.println(c.list().toString());
+		System.out.println();
 		System.out.println(c2.list().toString());
+		System.out.println();
 		System.out.println(c3.list().toString());
+		System.out.println();
 		System.out.println(c4.list().toString());
 		
 		s.close();
